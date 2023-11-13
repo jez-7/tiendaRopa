@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class tiendaOnline {
+public class tiendaOnline   {
+    private String link = "www.tiendaonline.com";
+    private String nombre = "Tienda Online";
+
+
 }
