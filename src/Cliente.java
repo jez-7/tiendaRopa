@@ -42,9 +42,19 @@ public class Cliente {
     public void realizarPedido() {
         JOptionPane.showMessageDialog(null, "Ingrese sus datos para realizar el pedido");
 
-        this.nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
-        this.direccion = JOptionPane.showInputDialog("Ingrese su dirección:");
-        this.mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
+        do {
+            this.nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
+        } while (nombre == null || nombre.trim().isEmpty());
+
+        // Validar la dirección
+        do {
+            this.direccion = JOptionPane.showInputDialog("Ingrese su dirección:");
+        } while (direccion == null || direccion.trim().isEmpty());
+
+        // Validar el correo electrónico
+        do {
+            this.mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
+        } while (mail == null || mail.trim().isEmpty());
     }
 }
 

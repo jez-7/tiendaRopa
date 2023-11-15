@@ -15,11 +15,11 @@ public class Proveedor {
     }
 
 
-    public boolean envioStock() {
+    /*public boolean envioStock() {
         Random random = new Random();
         int resultado = random.nextInt(2);
 
         return resultado == 1;
-    }
+    }*/
 }
 

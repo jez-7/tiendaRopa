@@ -6,7 +6,7 @@ public class Pedido {
     private Date fecha;
     private String productos;
     private Cliente cliente;
-    private tiendaOnline tienda;
+    private String nombreProducto;
 
 
 
@@ -16,13 +16,10 @@ public class Pedido {
     }
 
 
-    public String getNombreCliente() {
-        return cliente != null ? cliente.getNombre() : "Cliente no especificado";
-    }
 
 
 
-    public void agregarProductos(tiendaOnline tienda) {
+    public void agregarProductos(tiendaOnline tienda, Stock stock) {
         try {
             String input = JOptionPane.showInputDialog("Ingrese el ID del producto que desea comprar:");
             if (input != null) {
@@ -30,17 +27,28 @@ public class Pedido {
 
                 productos productoComprado = tienda.obtenerProductoPorId(idProducto);
 
+                nombreProducto = productoComprado.getNombre();
+
                 if (productoComprado != null) {
                     JOptionPane.showMessageDialog(null, "Ha seleccionado el producto: " + productoComprado.getNombre());
 
 
+
                     double total = calcularTotal(tienda, idProducto);
+                    procesarPedido();
+                    stock.reducirStock(tienda, idProducto);
+
                 }
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un ID válido.");
         }
     }
+
+
+
+
+
 
     public double calcularTotal(tiendaOnline tienda, int idProducto) {
         productos producto = tienda.obtenerProductoPorId(idProducto);
@@ -54,11 +62,34 @@ public class Pedido {
             return total;
         } else {
             JOptionPane.showMessageDialog(null, "Fallo en el calculo del pago");
-            return 0.00;
+            return 0.0;
         }
     }
 
+
+
+
+
+
+
     public void procesarPedido() {
+
+        String nombreCliente = cliente.getNombre();
+        String direccionCliente = cliente.getDireccion();
+        String mailCliente = cliente.getMail();
+
+
+
+        String mensaje = "Compra realizada con éxito!\n"
+                + " \n"
+                + "Producto: " + nombreProducto + "\n"
+                + "Nombre del cliente: " + nombreCliente + "\n"
+                + "Dirección: " + direccionCliente + "\n"
+                + "Correo electrónico: " + mailCliente;
+
+        JOptionPane.showMessageDialog(null, mensaje);
+
+
 
     }
 

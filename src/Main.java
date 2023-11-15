@@ -3,38 +3,36 @@ import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
 
-        Cliente cliente = new Cliente(); //
+
+        boolean continuar = true;
+
+        Cliente cliente = new Cliente();
         cliente.realizarPedido();
 
-
-        System.out.println(" ");
-
-
-
+        Stock stock = new Stock();
         tiendaOnline tienda = new tiendaOnline();
-        tienda.mostrarCatalogo();
+
+        while (continuar) {
+            Pedido pedido = new Pedido(cliente);
+
+            tienda.mostrarCatalogo();
+            pedido.agregarProductos(tienda, stock);
 
 
 
+            continuar = preguntarContinuar();
+        }
+    }
 
-        System.out.println(" ");
+    private static boolean preguntarContinuar() {
+        int opcion = JOptionPane.showConfirmDialog(
+                null,
+                "¿Desea realizar otra compra?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION
+        );
 
-
-
-
-
-        Pedido pedido = new Pedido(cliente);
-
-
-        pedido.agregarProductos(tienda);
-
-
-
-
-
-
-
-
+        return opcion == JOptionPane.YES_OPTION;
     }
 }
 

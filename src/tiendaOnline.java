@@ -24,6 +24,12 @@ public class tiendaOnline {
     }
 
     public productos obtenerProductoPorId(int id) {
-        return catalogo.get(id);
+        productos producto = catalogo.get(id);
+        if (producto != null) {
+            return producto;
+        } else {
+            System.out.println("Error: Producto no encontrado con ID " + id);
+            return null;
+        }
     }
 }
