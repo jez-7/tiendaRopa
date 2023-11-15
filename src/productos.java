@@ -1,18 +1,30 @@
 public class productos {
-    private String color;
-    private int id;
-    private String nombre;
-    private int precio;
-    private String talle;
+    public String color;
+    public int id;
+    public String nombre;
+    public double precio;
+    public String talle;
+    public int stock;
 
-    public productos(String color, int id, String nombre, int precio, String talle) {
+
+    //constructores
+    public productos() {
+    }
+
+    public productos(String color, int id, String nombre, double precio, String talle, int stock) {
         this.color = color;
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.talle = talle;
+        this.stock = stock;;
     }
+    //constructores
 
+
+
+
+    //getters y setters//
     public String getColor() {
         return color;
     }
@@ -37,11 +49,11 @@ public class productos {
         this.nombre = nombre;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -52,4 +64,18 @@ public class productos {
     public void setTalle(String talle) {
         this.talle = talle;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+
 }
+
+
+
+

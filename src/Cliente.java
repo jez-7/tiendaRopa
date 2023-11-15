@@ -1,12 +1,11 @@
+import javax.swing.JOptionPane;
+
 public class Cliente {
     private String direccion;
     private String mail;
     private String nombre;
 
-    public void realizarPedido() {
-
-
-
+    public Cliente() {
     }
 
     public Cliente(String direccion, String mail, String nombre) {
@@ -38,4 +37,17 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    // Método
+    public void realizarPedido() {
+        JOptionPane.showMessageDialog(null, "Ingrese sus datos para realizar el pedido");
+
+        this.nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
+        this.direccion = JOptionPane.showInputDialog("Ingrese su dirección:");
+        this.mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
+    }
 }
+
+
+
+
