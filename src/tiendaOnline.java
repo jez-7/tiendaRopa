@@ -1,5 +1,7 @@
+// Modificación en la clase tiendaOnline
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class tiendaOnline {
     private String link = "www.tiendaonline.com";
@@ -13,23 +15,34 @@ public class tiendaOnline {
         catalogo.put(3, new productos("Verde", 3, "Zapatillas Vans", 28670, "43", 6));
     }
 
-    public void mostrarCatalogo() {
-        System.out.println("Catálogo de productos:");
+    public String mostrarCatalogo() {
+        // Se crea una cadena con la información del catálogo
+        StringBuilder catalogoInfo = new StringBuilder("Catálogo de productos:\n");
         for (Map.Entry<Integer, productos> entry : catalogo.entrySet()) {
             productos producto = entry.getValue();
-            System.out.println("ID: " + entry.getKey() + ", Nombre: " + producto.getNombre() +
-                    ", Precio: $" + producto.getPrecio() + ", Stock: " + producto.getStock() +
-                    ", Color: " + producto.getColor());
+            catalogoInfo.append("ID: ").append(entry.getKey()).append(", Nombre: ").append(producto.getNombre())
+                    .append(", Precio: $").append(producto.getPrecio()).append(", Stock: ").append(producto.getStock())
+                    .append(", Color: ").append(producto.getColor()).append("\n");
         }
+
+        return catalogoInfo.toString();
     }
+
+
 
     public productos obtenerProductoPorId(int id) {
         productos producto = catalogo.get(id);
         if (producto != null) {
             return producto;
         } else {
-            System.out.println("Error: Producto no encontrado con ID " + id);
+            JOptionPane.showMessageDialog(null, "Error: No hay un producto con esa id");
             return null;
         }
+    }
+
+
+
+    public Map<Integer, productos> getCatalogo() {
+        return catalogo;
     }
 }

@@ -7,7 +7,8 @@ public class Main {
         boolean continuar = true;
 
         Cliente cliente = new Cliente();
-        cliente.realizarPedido();
+
+
 
         Stock stock = new Stock();
         tiendaOnline tienda = new tiendaOnline();

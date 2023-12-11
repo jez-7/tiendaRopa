@@ -39,22 +39,16 @@ public class Cliente {
     }
 
     // Método
-    public void realizarPedido() {
-        JOptionPane.showMessageDialog(null, "Ingrese sus datos para realizar el pedido");
+    public void realizarPedido(GUI gui) {
 
-        do {
-            this.nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
-        } while (nombre == null || nombre.trim().isEmpty());
+        if (gui.nombreTextField.getText().isEmpty() ||
+                gui.direccionTextField.getText().isEmpty() ||
+                gui.correoTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de enviar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        // Validar la dirección
-        do {
-            this.direccion = JOptionPane.showInputDialog("Ingrese su dirección:");
-        } while (direccion == null || direccion.trim().isEmpty());
 
-        // Validar el correo electrónico
-        do {
-            this.mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-        } while (mail == null || mail.trim().isEmpty());
     }
 }
 
